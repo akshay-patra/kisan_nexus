@@ -1,8 +1,196 @@
+"use client";
+
+import Link from "next/link";
+import { ArrowRight, Leaf, LockKeyhole, Phone } from "lucide-react";
+import { useState } from "react";
+
 export default function Login() {
+  const [loginMethod, setLoginMethod] = useState<"mobile" | "email">("mobile");
+
   return (
-    <div className="p-8">
-      <h1 className="text-2xl font-bold mb-4">Login</h1>
-      <p className="text-gray-600">Please login to continue.</p>
-    </div>
+    <main className="min-h-screen bg-[#F7FAF5] text-slate-900">
+      <div className="grid min-h-screen lg:grid-cols-2">
+
+        {/* Left — Brand */}
+        <section className="relative hidden overflow-hidden bg-[#12372A] lg:flex">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(72,187,120,0.25),transparent_45%)]" />
+
+          <div className="relative z-10 flex w-full flex-col justify-between p-12 xl:p-16">
+
+            <Link href="/" className="flex items-center gap-3">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10">
+                <Leaf className="h-6 w-6 text-emerald-300" />
+              </div>
+
+              <div>
+                <div className="text-xl font-bold text-white">
+                  Kisan Nexus
+                </div>
+                <div className="text-xs text-emerald-200">
+                  Predict • Aggregate • Match • Optimize
+                </div>
+              </div>
+            </Link>
+
+            <div className="max-w-xl">
+              <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-emerald-300">
+                Welcome back
+              </p>
+
+              <h1 className="text-4xl font-bold leading-tight text-white xl:text-5xl">
+                Connect better.
+                <br />
+                Trade smarter.
+              </h1>
+
+              <p className="mt-6 max-w-lg text-lg leading-8 text-slate-300">
+                Access your Kisan Nexus marketplace, supply,
+                orders, matching and logistics tools from one place.
+              </p>
+            </div>
+
+            <div className="text-sm text-slate-400">
+              © {new Date().getFullYear()} Kisan Nexus
+            </div>
+          </div>
+        </section>
+
+        {/* Right — Login */}
+        <section className="flex items-center justify-center px-6 py-12 sm:px-10">
+          <div className="w-full max-w-md">
+
+            <div className="mb-8 lg:hidden">
+              <Link href="/" className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100">
+                  <Leaf className="h-5 w-5 text-emerald-700" />
+                </div>
+
+                <span className="text-xl font-bold text-slate-900">
+                  Kisan Nexus
+                </span>
+              </Link>
+            </div>
+
+            <div className="mb-8">
+              <h2 className="text-3xl font-bold tracking-tight">
+                Welcome back
+              </h2>
+
+              <p className="mt-2 text-sm text-slate-500">
+                Login to continue to your Kisan Nexus account.
+              </p>
+            </div>
+
+            {/* Login method */}
+            <div className="mb-6 grid grid-cols-2 rounded-xl bg-slate-100 p-1">
+              <button
+                type="button"
+                onClick={() => setLoginMethod("mobile")}
+                className={`rounded-lg px-4 py-2.5 text-sm font-medium transition ${
+                  loginMethod === "mobile"
+                    ? "bg-white text-slate-900 shadow-sm"
+                    : "text-slate-500"
+                }`}
+              >
+                Mobile
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setLoginMethod("email")}
+                className={`rounded-lg px-4 py-2.5 text-sm font-medium transition ${
+                  loginMethod === "email"
+                    ? "bg-white text-slate-900 shadow-sm"
+                    : "text-slate-500"
+                }`}
+              >
+                Email
+              </button>
+            </div>
+
+            <form className="space-y-5">
+
+              <div>
+                <label className="mb-2 block text-sm font-medium text-slate-700">
+                  {loginMethod === "mobile"
+                    ? "Mobile number"
+                    : "Email address"}
+                </label>
+
+                <div className="relative">
+                  {loginMethod === "mobile" ? (
+                    <Phone className="absolute left-3 top-3.5 h-5 w-5 text-slate-400" />
+                  ) : (
+                    <span className="absolute left-3 top-3.5 text-sm text-slate-400">
+                      @
+                    </span>
+                  )}
+
+                  <input
+                    type={loginMethod === "mobile" ? "tel" : "email"}
+                    placeholder={
+                      loginMethod === "mobile"
+                        ? "Enter mobile number"
+                        : "Enter email address"
+                    }
+                    className="h-12 w-full rounded-xl border border-slate-200 bg-white pl-11 pr-4 text-sm outline-none transition focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <div className="mb-2 flex items-center justify-between">
+                  <label className="text-sm font-medium text-slate-700">
+                    Password
+                  </label>
+
+                  <button
+                    type="button"
+                    className="text-sm font-medium text-emerald-700 hover:text-emerald-800"
+                  >
+                    Forgot password?
+                  </button>
+                </div>
+
+                <div className="relative">
+                  <LockKeyhole className="absolute left-3 top-3.5 h-5 w-5 text-slate-400" />
+
+                  <input
+                    type="password"
+                    placeholder="Enter your password"
+                    className="h-12 w-full rounded-xl border border-slate-200 bg-white pl-11 pr-4 text-sm outline-none transition focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10"
+                  />
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                className="flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#12372A] text-sm font-semibold text-white transition hover:bg-[#0d2b20]"
+              >
+                Login
+                <ArrowRight className="h-4 w-4" />
+              </button>
+            </form>
+
+            <div className="my-8 flex items-center gap-4">
+              <div className="h-px flex-1 bg-slate-200" />
+              <span className="text-xs text-slate-400">OR</span>
+              <div className="h-px flex-1 bg-slate-200" />
+            </div>
+
+            <p className="text-center text-sm text-slate-500">
+              Don't have a Kisan Nexus account?{" "}
+              <Link
+                href="/register"
+                className="font-semibold text-emerald-700 hover:text-emerald-800"
+              >
+                Create account
+              </Link>
+            </p>
+
+          </div>
+        </section>
+      </div>
+    </main>
   );
 }
