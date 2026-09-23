@@ -23,3 +23,22 @@ env/
 .DS_Store
 
 structure.txt
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# AI & Data Science
+*.pt
+*.pth
+*.h5
+*.pkl
+*.onnx
+.ipynb_checkpoints/
+ai_service/data/
+ai_service/models/
+
+# OS
+Thumbs.db
