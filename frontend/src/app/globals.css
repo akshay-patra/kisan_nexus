@@ -1,0 +1,122 @@
+/* @import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+} */
+
+
+
+
+@import "tailwindcss";
+
+:root {
+  --background: #f7faf5;
+  --foreground: #17221a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+::selection {
+  background: #bfe0c4;
+  color: #15351f;
+}
+
+.nav-link {
+  color: #647166;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.nav-link:hover {
+  color: #176b3a;
+}
+
+.mobile-nav-link {
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  color: #526154;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.mobile-nav-link:hover {
+  background: #eaf2e9;
+  color: #176b3a;
+}
+
+.section-eyebrow {
+  color: #176b3a;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.section-title {
+  margin-top: 0.75rem;
+  max-width: 44rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  color: #17221a;
+}
+
+.section-description {
+  margin-top: 1.25rem;
+  max-width: 40rem;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #718071;
+}
+
+@media (max-width: 640px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-description {
+    font-size: 0.95rem;
+  }
+}
