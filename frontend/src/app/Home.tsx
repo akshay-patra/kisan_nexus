@@ -81,24 +81,56 @@ import { useState } from "react";
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+// Commented by agent, reason: Updating RoleCard usages to include href prop for redirection
+//           <div className="mt-12 grid gap-5 md:grid-cols-3">
+//             <RoleCard
+//               icon={<Leaf className="h-6 w-6" />}
+//               title="Farmers"
+//               description="List available produce, understand demand and discover relevant buyer opportunities."
+//             />
+// 
+//             <RoleCard
+//               icon={<Boxes className="h-6 w-6" />}
+//               title="FPOs"
+//               description="Aggregate fragmented supply, coordinate quality and fulfill larger buyer requirements."
+//             />
+// 
+//             <RoleCard
+//               icon={<Users className="h-6 w-6" />}
+//               title="Buyers"
+//               description="Post requirements and find coordinated supply based on practical matching criteria."
+//             />
+//           </div>
+// End commented by agent
+
+// Commented by agent, reason: Replace text logo with image logo in navbar
+//           <a href="/" className="flex items-center gap-2.5">
+//             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#176b3a] text-white shadow-sm">
+//               <Leaf className="h-5 w-5" />
+//             </div>
+// 
+//             <div>
+//               <div className="text-lg font-bold tracking-tight">
+//                 Kisan <span className="text-[#176b3a]">Nexus</span>
+//               </div>
+//               <div className="hidden text-[10px] font-medium uppercase tracking-[0.18em] text-[#718071] sm:block">
+//                 Farm to market
+//               </div>
+//             </div>
+//           </a>
+// End commented by agent
+
   return (
     <main className="min-h-screen bg-[#f7faf5] text-[#17221a]">
       {/* NAVBAR */}
       <header className="sticky top-0 z-50 border-b border-[#dce7dc]/80 bg-[#f7faf5]/90 backdrop-blur-xl">
         <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-10">
           <a href="/" className="flex items-center gap-2.5">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#176b3a] text-white shadow-sm">
-              <Leaf className="h-5 w-5" />
-            </div>
-
-            <div>
-              <div className="text-lg font-bold tracking-tight">
-                Kisan <span className="text-[#176b3a]">Nexus</span>
-              </div>
-              <div className="hidden text-[10px] font-medium uppercase tracking-[0.18em] text-[#718071] sm:block">
-                Farm to market
-              </div>
-            </div>
+            <img 
+              src="/kisan_nexus_web_logo.png" 
+              alt="Kisan Nexus Logo" 
+              className="h-12 w-auto" 
+            />
           </a>
 
           <nav className="hidden items-center gap-8 md:flex">
@@ -517,18 +549,21 @@ export default function Home() {
               icon={<Leaf className="h-6 w-6" />}
               title="Farmers"
               description="List available produce, understand demand and discover relevant buyer opportunities."
+              href="/farmer/dashboard"
             />
 
             <RoleCard
               icon={<Boxes className="h-6 w-6" />}
               title="FPOs"
               description="Aggregate fragmented supply, coordinate quality and fulfill larger buyer requirements."
+              href="/fpo/dashboard"
             />
 
             <RoleCard
               icon={<Users className="h-6 w-6" />}
               title="Buyers"
               description="Post requirements and find coordinated supply based on practical matching criteria."
+              href="/buyer/dashboard"
             />
           </div>
         </div>
@@ -712,14 +747,47 @@ function ImpactCard({ value, label }: { value: string; label: string }) {
   );
 }
 
+// Commented by agent, reason: Add href prop to RoleCard to support dynamic redirection
+// function RoleCard({
+//   icon,
+//   title,
+//   description,
+// }: {
+//   icon: React.ReactNode;
+//   title: string;
+//   description: string;
+// }) {
+//   return (
+//     <div className="rounded-2xl border border-[#dce7dc] bg-[#f9fbf8] p-7 transition duration-300 hover:-translate-y-1 hover:border-[#b9d4bc] hover:bg-white hover:shadow-xl hover:shadow-[#23442b]/5">
+//       <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#e7f5e9] text-[#176b3a]">
+//         {icon}
+//       </div>
+// 
+//       <h3 className="mt-6 text-xl font-bold text-[#1d2c21]">{title}</h3>
+// 
+//       <p className="mt-3 text-sm leading-6 text-[#718071]">{description}</p>
+// 
+//       <a
+//         href="/login"
+//         className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-[#176b3a]"
+//       >
+//         Get started
+//         <ArrowRight className="h-4 w-4" />
+//       </a>
+//     </div>
+//   );
+// }
+// End commented by agent
 function RoleCard({
   icon,
   title,
   description,
+  href = "/login",
 }: {
   icon: React.ReactNode;
   title: string;
   description: string;
+  href?: string;
 }) {
   return (
     <div className="rounded-2xl border border-[#dce7dc] bg-[#f9fbf8] p-7 transition duration-300 hover:-translate-y-1 hover:border-[#b9d4bc] hover:bg-white hover:shadow-xl hover:shadow-[#23442b]/5">
@@ -732,7 +800,7 @@ function RoleCard({
       <p className="mt-3 text-sm leading-6 text-[#718071]">{description}</p>
 
       <a
-        href="/login"
+        href={href}
         className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-[#176b3a]"
       >
         Get started
