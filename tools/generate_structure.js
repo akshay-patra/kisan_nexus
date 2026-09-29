@@ -5,7 +5,7 @@ const defaultIgnoreDirs = new Set([
     '.git', 'node_modules', '__pycache__', '.venv', 'venv', 'env',
     'target', '.idea', '.vscode', '.mvn', '.pytest_cache', 'dist', 'build', '.next'
 ]);
-const defaultIgnoreFiles = new Set(['.DS_Store', 'structure.txt']);
+const defaultIgnoreFiles = new Set(['.DS_Store']);
 
 function generateTree(dirPath, prefix = "", ignoreDirs = defaultIgnoreDirs, ignoreFiles = defaultIgnoreFiles) {
     let treeStr = "";
@@ -21,6 +21,9 @@ function generateTree(dirPath, prefix = "", ignoreDirs = defaultIgnoreDirs, igno
 
     for (const item of items) {
         if (ignoreDirs.has(item) || ignoreFiles.has(item)) {
+            continue;
+        }
+        if (item.startsWith('.env') && !item.endsWith('.example')) {
             continue;
         }
         
@@ -64,16 +67,25 @@ function generateTree(dirPath, prefix = "", ignoreDirs = defaultIgnoreDirs, igno
 function main() {
     const scriptDir = __dirname;
     const projectRoot = path.dirname(scriptDir);
-    const outputFile = path.join(projectRoot, 'structure.txt');
+    const outputFile = path.join(projectRoot, 'DIRECTORY_STRUCTURE.md');
 
     console.log(`Generating structure for: ${projectRoot}`);
 
     let treeContent = `${path.basename(projectRoot)}/\n`;
     treeContent += generateTree(projectRoot);
 
-    fs.writeFileSync(outputFile, treeContent, 'utf8');
+    let fileExists = fs.existsSync(outputFile);
+    let existingContent = fileExists ? fs.readFileSync(outputFile, 'utf8') : null;
 
-    console.log(`Structure saved to: ${outputFile}`);
+    if (!fileExists) {
+        fs.writeFileSync(outputFile, treeContent, 'utf8');
+        console.log(`✅ Created: ${outputFile}`);
+    } else if (existingContent !== treeContent) {
+        fs.writeFileSync(outputFile, treeContent, 'utf8');
+        console.log(`🔄 Updated: ${outputFile}`);
+    } else {
+        console.log(`✨ Already up-to-date (nothing modified): ${outputFile}`);
+    }
 }
 
 main();
