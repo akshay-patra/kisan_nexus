@@ -60,6 +60,8 @@
 
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
 import {
   ArrowRight,
   BarChart3,
@@ -125,13 +127,15 @@ export default function Home() {
       {/* NAVBAR */}
       <header className="sticky top-0 z-50 border-b border-[#dce7dc]/80 bg-[#f7faf5]/90 backdrop-blur-xl">
         <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-10">
-          <a href="/" className="flex items-center gap-2.5">
-            <img 
+          <Link href="/" className="flex items-center gap-2.5">
+            <Image 
               src="/kisan_nexus_web_logo.png" 
               alt="Kisan Nexus Logo" 
+              width={160}
+              height={48}
               className="h-12 w-auto" 
             />
-          </a>
+          </Link>
 
           <nav className="hidden items-center gap-8 md:flex">
             <a href="#how-it-works" className="nav-link">

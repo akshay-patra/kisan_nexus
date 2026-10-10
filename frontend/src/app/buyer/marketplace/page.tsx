@@ -1,5 +1,5 @@
-import BuyerMarketplace from './BuyerMarketplace';
+import BuyerMarketplace from "./BuyerMarketplace";
 
-export default function Page() {
+export default function BuyerMarketplacePage() {
   return <BuyerMarketplace />;
 }

@@ -40,11 +40,9 @@ import { usePathname } from "next/navigation";
 import {
   Bell,
   ChevronDown,
-  ClipboardList,
   LayoutDashboard,
   Leaf,
   LogOut,
-  MapPin,
   Package,
   PlusCircle,
   Settings,

@@ -179,7 +179,7 @@ export default function Login() {
             </div>
 
             <p className="text-center text-sm text-slate-500">
-              Don't have a Kisan Nexus account?{" "}
+              Don&apos;t have a Kisan Nexus account?{" "}
               <Link
                 href="/register"
                 className="font-semibold text-emerald-700 hover:text-emerald-800"

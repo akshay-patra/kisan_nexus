@@ -1,5 +1,5 @@
-import BuyerProfile from './BuyerProfile';
+import BuyerProfile from "./BuyerProfile";
 
-export default function Page() {
+export default function BuyerProfilePage() {
   return <BuyerProfile />;
 }

@@ -1,5 +1,5 @@
-import BuyerOrders from './BuyerOrders';
+import BuyerOrders from "./BuyerOrders";
 
-export default function Page() {
+export default function BuyerOrdersPage() {
   return <BuyerOrders />;
 }

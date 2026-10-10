@@ -10,14 +10,11 @@
 
 "use client";
 
-import Link from "next/link";
 import {
   ArrowRight,
-  CheckCircle2,
   MapPin,
   Package,
   Sparkles,
-  TrendingUp,
 } from "lucide-react";
 
 const matches = [
