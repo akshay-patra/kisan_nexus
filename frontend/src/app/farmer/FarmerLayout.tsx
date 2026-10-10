@@ -37,12 +37,15 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
+import { useState } from "react";
 import {
   Bell,
   ChevronDown,
   LayoutDashboard,
-  Leaf,
   LogOut,
+  Menu,
+  X,
   Package,
   PlusCircle,
   Settings,
@@ -91,27 +94,39 @@ export default function FarmerLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-[#F7FAF5] text-slate-900">
 
-      {/* Desktop Sidebar */}
-      <aside className="fixed inset-y-0 left-0 z-40 hidden w-64 border-r border-slate-200 bg-white lg:flex lg:flex-col">
+      {/* Overlay for mobile */}
+      {mobileMenuOpen && (
+        <div 
+          className="fixed inset-0 z-40 bg-slate-900/50 lg:hidden"
+          onClick={() => setMobileMenuOpen(false)}
+        />
+      )}
+
+      {/* Sidebar */}
+      <aside className={`fixed inset-y-0 left-0 z-50 flex w-64 flex-col border-r border-slate-200 bg-white transition-transform duration-300 lg:translate-x-0 ${mobileMenuOpen ? "translate-x-0" : "-translate-x-full"}`}>
 
         {/* Logo */}
-        <div className="flex h-20 items-center border-b border-slate-100 px-6">
-          <Link href="/" className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#12372A]">
-              <Leaf className="h-5 w-5 text-emerald-300" />
-            </div>
-
-            <div>
-              <p className="font-bold text-slate-900">Kisan Nexus</p>
-              <p className="text-[10px] font-medium uppercase tracking-wider text-emerald-700">
-                Farmer Portal
-              </p>
-            </div>
+        <div className="flex h-20 items-center justify-between border-b border-slate-100 px-6">
+          <Link href="/" className="flex items-center gap-2.5">
+            <Image 
+              src="/kisan_nexus_web_logo.png" 
+              alt="Kisan Nexus Logo" 
+              width={160}
+              height={48}
+              className="h-12 w-auto" 
+            />
           </Link>
+          <button 
+            className="rounded-lg p-2 text-slate-500 hover:bg-slate-100 lg:hidden"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            <X className="h-5 w-5" />
+          </button>
         </div>
 
         {/* Navigation */}
@@ -200,13 +215,21 @@ export default function FarmerLayout({
         {/* Top Bar */}
         <header className="sticky top-0 z-30 flex h-20 items-center justify-between border-b border-slate-200 bg-white/95 px-5 backdrop-blur sm:px-8">
 
-          <div>
-            <p className="hidden text-xs font-medium text-slate-400 sm:block">
-              Farmer Workspace
-            </p>
-            <p className="font-semibold text-slate-900">
-              Kisan Nexus
-            </p>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => setMobileMenuOpen(true)}
+              className="rounded-lg p-2 -ml-2 text-slate-600 hover:bg-slate-100 lg:hidden"
+            >
+              <Menu className="h-6 w-6" />
+            </button>
+            <div>
+              <p className="hidden text-xs font-medium text-slate-400 sm:block">
+                Farmer Workspace
+              </p>
+              <p className="font-semibold text-slate-900">
+                Kisan Nexus
+              </p>
+            </div>
           </div>
 
           <div className="flex items-center gap-3">
@@ -233,31 +256,6 @@ export default function FarmerLayout({
             </div>
           </div>
         </header>
-
-        {/* Mobile Navigation */}
-        <div className="overflow-x-auto border-b border-slate-200 bg-white lg:hidden">
-          <nav className="flex min-w-max gap-1 px-4 py-2">
-            {navigation.map((item) => {
-              const Icon = item.icon;
-              const active = pathname === item.href;
-
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-medium ${
-                    active
-                      ? "bg-emerald-50 text-emerald-800"
-                      : "text-slate-500"
-                  }`}
-                >
-                  <Icon className="h-4 w-4" />
-                  {item.label}
-                </Link>
-              );
-            })}
-          </nav>
-        </div>
 
         <main>{children}</main>
       </div>

@@ -37,6 +37,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
+import { useState } from "react";
 import {
   LayoutDashboard,
   ShoppingBag,
@@ -44,8 +46,9 @@ import {
   Package,
   UserCircle,
   Plus,
-  Sprout,
   LogOut,
+  Menu,
+  X,
 } from "lucide-react";
 
 const navigation = [
@@ -82,24 +85,57 @@ export default function BuyerLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-slate-50">
-      <div className="flex min-h-screen">
-        {/* Sidebar */}
-        <aside className="sticky top-0 hidden h-screen w-64 flex-col border-r border-slate-200 bg-white lg:flex">
-          {/* Logo */}
-          <div className="flex h-20 items-center gap-3 border-b border-slate-200 px-6">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-600 text-white">
-              <Sprout className="h-5 w-5" />
-            </div>
+      {/* Mobile Header */}
+      <div className="flex h-16 items-center justify-between border-b border-slate-200 bg-white px-4 lg:hidden">
+        <Link href="/" className="flex items-center gap-2.5">
+          <Image 
+            src="/kisan_nexus_web_logo.png" 
+            alt="Kisan Nexus Logo" 
+            width={160}
+            height={48}
+            className="h-10 w-auto" 
+          />
+        </Link>
+        <button
+          onClick={() => setMobileMenuOpen(true)}
+          className="rounded-lg p-2 text-slate-600 hover:bg-slate-100"
+        >
+          <Menu className="h-6 w-6" />
+        </button>
+      </div>
 
-            <div>
-              <h1 className="text-lg font-bold text-slate-900">
-                Kisan Nexus
-              </h1>
-              <p className="text-xs text-slate-500">Buyer Portal</p>
-            </div>
+      <div className="flex min-h-screen">
+        {/* Overlay for mobile */}
+        {mobileMenuOpen && (
+          <div 
+            className="fixed inset-0 z-40 bg-slate-900/50 lg:hidden"
+            onClick={() => setMobileMenuOpen(false)}
+          />
+        )}
+
+        {/* Sidebar */}
+        <aside className={`fixed inset-y-0 left-0 z-50 flex w-64 flex-col border-r border-slate-200 bg-white transition-transform duration-300 lg:sticky lg:top-0 lg:h-screen lg:translate-x-0 ${mobileMenuOpen ? "translate-x-0" : "-translate-x-full"}`}>
+          {/* Logo */}
+          <div className="flex h-20 items-center justify-between border-b border-slate-200 px-6">
+            <Link href="/" className="flex items-center gap-2.5">
+              <Image 
+                src="/kisan_nexus_web_logo.png" 
+                alt="Kisan Nexus Logo" 
+                width={160}
+                height={48}
+                className="h-12 w-auto" 
+              />
+            </Link>
+            <button 
+              className="rounded-lg p-2 text-slate-500 hover:bg-slate-100 lg:hidden"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <X className="h-5 w-5" />
+            </button>
           </div>
 
           {/* Navigation */}
