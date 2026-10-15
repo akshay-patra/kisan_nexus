@@ -1,140 +1,55 @@
-// import Link from 'next/link';
-
-// export default function Home() {
-//   return (
-//     <div className="min-h-screen flex flex-col items-center p-8 bg-gray-50">
-//       <header className="w-full max-w-4xl flex justify-between items-center mb-16">
-//         <h1 className="text-3xl font-bold text-green-700">Kisan Nexus</h1>
-//         <Link href="/login" className="px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700">
-//           Login
-//         </Link>
-//       </header>
-
-//       <main className="w-full max-w-4xl space-y-16">
-//         <section className="text-center">
-//           <h2 className="text-4xl font-bold mb-4">Empowering Agriculture</h2>
-//           <p className="text-xl text-gray-600 mb-8">
-//             A comprehensive platform connecting Farmers, FPOs, and Buyers for a transparent, efficient, and profitable agricultural ecosystem.
-//           </p>
-//           <Link href="/login" className="px-8 py-3 bg-green-600 text-white rounded text-lg hover:bg-green-700">
-//             Get Started
-//           </Link>
-//         </section>
-
-//         <section>
-//           <h3 className="text-2xl font-semibold mb-4">How it works</h3>
-//           <div className="p-6 bg-white rounded shadow text-gray-500">[Placeholder: How it works content]</div>
-//         </section>
-
-//         <section>
-//           <h3 className="text-2xl font-semibold mb-4">For Farmers</h3>
-//           <div className="p-6 bg-white rounded shadow text-gray-500">[Placeholder: For Farmers content]</div>
-//         </section>
-
-//         <section>
-//           <h3 className="text-2xl font-semibold mb-4">For FPOs</h3>
-//           <div className="p-6 bg-white rounded shadow text-gray-500">[Placeholder: For FPOs content]</div>
-//         </section>
-
-//         <section>
-//           <h3 className="text-2xl font-semibold mb-4">For Buyers</h3>
-//           <div className="p-6 bg-white rounded shadow text-gray-500">[Placeholder: For Buyers content]</div>
-//         </section>
-
-//         <section>
-//           <h3 className="text-2xl font-semibold mb-4">Impact</h3>
-//           <div className="p-6 bg-white rounded shadow text-gray-500">[Placeholder: Impact content]</div>
-//         </section>
-//       </main>
-//     </div>
-//   );
-// }
-
-
-
-
-
-
-
-
-
 "use client";
 
 import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
+  ArrowUpRight,
+  BadgeCheck,
   BarChart3,
   Boxes,
   CheckCircle2,
   ChevronRight,
+  ChevronUp,
   Leaf,
   MapPin,
   Menu,
   Route,
+  ShieldCheck,
   Sparkles,
   TrendingUp,
   Truck,
   Users,
-  X,
 } from "lucide-react";
+
 import { useState } from "react";
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-// Commented by agent, reason: Updating RoleCard usages to include href prop for redirection
-//           <div className="mt-12 grid gap-5 md:grid-cols-3">
-//             <RoleCard
-//               icon={<Leaf className="h-6 w-6" />}
-//               title="Farmers"
-//               description="List available produce, understand demand and discover relevant buyer opportunities."
-//             />
-// 
-//             <RoleCard
-//               icon={<Boxes className="h-6 w-6" />}
-//               title="FPOs"
-//               description="Aggregate fragmented supply, coordinate quality and fulfill larger buyer requirements."
-//             />
-// 
-//             <RoleCard
-//               icon={<Users className="h-6 w-6" />}
-//               title="Buyers"
-//               description="Post requirements and find coordinated supply based on practical matching criteria."
-//             />
-//           </div>
-// End commented by agent
-
-// Commented by agent, reason: Replace text logo with image logo in navbar
-//           <a href="/" className="flex items-center gap-2.5">
-//             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#176b3a] text-white shadow-sm">
-//               <Leaf className="h-5 w-5" />
-//             </div>
-// 
-//             <div>
-//               <div className="text-lg font-bold tracking-tight">
-//                 Kisan <span className="text-[#176b3a]">Nexus</span>
-//               </div>
-//               <div className="hidden text-[10px] font-medium uppercase tracking-[0.18em] text-[#718071] sm:block">
-//                 Farm to market
-//               </div>
-//             </div>
-//           </a>
-// End commented by agent
 
   return (
     <main className="min-h-screen bg-[#f7faf5] text-[#17221a]">
       {/* NAVBAR */}
       <header className="sticky top-0 z-50 border-b border-[#dce7dc]/80 bg-[#f7faf5]/90 backdrop-blur-xl">
         <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-10">
-          <Link href="/" className="flex items-center gap-2.5">
-            <Image 
-              src="/kisan_nexus_web_logo.png" 
-              alt="Kisan Nexus Logo" 
+          <Link href="/" className="group flex items-center gap-3 transition-opacity hover:opacity-95">
+            <Image
+              src="/kisan_nexus_web_logo.png"
+              alt="Kisan Nexus Logo"
               width={160}
               height={48}
-              className="h-12 w-auto" 
+              className="h-11 w-auto rounded-xl object-contain shadow-xs transition-transform duration-300 group-hover:scale-105"
             />
+            <div className="flex flex-col">
+              <div className="flex items-center gap-2">
+                <span className="text-xl font-extrabold tracking-tight text-[#17221a]">
+                  Kisan <span className="text-[#176b3a]">Nexus</span>
+                </span>
+              </div>
+              <span className="hidden text-[11px] font-medium tracking-wide text-[#59735d] sm:block">
+                Demand-Driven Agri Commerce
+              </span>
+            </div>
           </Link>
 
           <nav className="hidden items-center gap-8 md:flex">
@@ -161,7 +76,7 @@ export default function Home() {
             </a>
 
             <a
-              href="/login"
+              href="/register"
               className="rounded-xl bg-[#176b3a] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#12592f] hover:shadow-md"
             >
               Get started
@@ -170,20 +85,33 @@ export default function Home() {
 
           <button
             type="button"
-            aria-label="Toggle navigation"
-            className="rounded-xl p-2 text-[#24452d] md:hidden"
+            aria-label={mobileMenuOpen ? "Collapse navigation" : "Expand navigation"}
+            className={`flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs font-semibold tracking-wide transition-all duration-200 md:hidden ${mobileMenuOpen
+                ? "border border-[#176b3a]/30 bg-[#eaf2e9] text-[#176b3a] shadow-xs ring-2 ring-[#176b3a]/20"
+                : "border border-[#dce7dc] bg-white/90 text-[#24502f] hover:bg-[#eaf2e9] hover:border-[#c5d8c5]"
+              }`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? (
-              <X className="h-6 w-6" />
+              <>
+                <span className="font-semibold">Close</span>
+                <div className="flex h-5 w-5 items-center justify-center rounded-full bg-[#176b3a] text-white">
+                  <ChevronUp className="h-3.5 w-3.5" />
+                </div>
+              </>
             ) : (
-              <Menu className="h-6 w-6" />
+              <>
+                <span className="font-semibold">Menu</span>
+                <div className="flex h-5 w-5 items-center justify-center rounded-full bg-[#eaf2e9] text-[#176b3a]">
+                  <Menu className="h-3.5 w-3.5" />
+                </div>
+              </>
             )}
           </button>
         </div>
 
         {mobileMenuOpen && (
-          <div className="border-t border-[#dce7dc] bg-[#f7faf5] px-5 py-5 md:hidden">
+          <div className="border-t border-[#dce7dc] bg-[#f7faf5]/95 px-5 py-5 backdrop-blur-md md:hidden">
             <div className="flex flex-col gap-2">
               <a
                 href="#how-it-works"
@@ -207,11 +135,28 @@ export default function Home() {
                 Impact
               </a>
               <a
-                href="/login"
-                className="mt-2 rounded-xl bg-[#176b3a] px-4 py-3 text-center text-sm font-semibold text-white"
+                href="#roles"
+                className="mobile-nav-link"
+                onClick={() => setMobileMenuOpen(false)}
               >
-                Get started
+                For everyone
               </a>
+              <div className="mt-3 grid grid-cols-2 gap-2 border-t border-[#dce7dc] pt-3">
+                <a
+                  href="/login"
+                  className="rounded-xl border border-[#dce7dc] bg-white px-4 py-2.5 text-center text-sm font-semibold text-[#24502f] hover:bg-[#eaf2e9]"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Login
+                </a>
+                <a
+                  href="/login"
+                  className="rounded-xl bg-[#176b3a] px-4 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-[#12592f]"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Get started
+                </a>
+              </div>
             </div>
           </div>
         )}
@@ -242,7 +187,7 @@ export default function Home() {
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <a
-                href="/login"
+                href="/register"
                 className="group inline-flex items-center justify-center gap-2 rounded-xl bg-[#176b3a] px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#176b3a]/15 transition hover:-translate-y-0.5 hover:bg-[#12592f]"
               >
                 Get started
@@ -595,7 +540,7 @@ export default function Home() {
               </p>
 
               <a
-                href="/login"
+                href="/register"
                 className="mt-8 inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-bold text-[#176b3a] transition hover:-translate-y-0.5 hover:bg-[#f0f7f0]"
               >
                 Get started
@@ -607,33 +552,145 @@ export default function Home() {
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-[#dfe9df] bg-[#f7faf5]">
-        <div className="mx-auto flex max-w-7xl flex-col gap-6 px-5 py-8 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-10">
-          <div>
-            <div className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#176b3a] text-white">
-                <Leaf className="h-4 w-4" />
+      <footer className="border-t border-[#dfe9df] bg-linear-to-b from-[#f7faf5] to-[#edf4ec] text-[#1d2c21]">
+        <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-10">
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-5">
+            {/* Brand Column */}
+            <div className="lg:col-span-2">
+              <Link href="/" className="inline-flex items-center gap-3 group">
+                <Image
+                  src="/kisan_nexus_web_logo.png"
+                  alt="Kisan Nexus Logo"
+                  width={160}
+                  height={48}
+                  className="h-12 w-auto rounded-xl object-contain shadow-xs transition-transform group-hover:scale-105"
+                />
+                <div className="flex flex-col">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xl font-extrabold tracking-tight text-[#17221a]">
+                      Kisan <span className="text-[#176b3a]">Nexus</span>
+                    </span>
+                  </div>
+                  <span className="text-[11px] font-medium tracking-wide text-[#59735d]">
+                    Demand-Driven Agri Commerce
+                  </span>
+                </div>
+              </Link>
+
+              {/* Tagline Highlight Badge */}
+              <p className="mt-4 max-w-md text-sm leading-relaxed text-[#5f6e62]">
+                Connecting farmers, FPOs, and bulk buyers directly — ensuring transparent pricing, verified produce quality, and fast, reliable trade.
+              </p>
+
+              {/* Network Status Indicator */}
+              <div className="mt-5 inline-flex items-center gap-2.5 rounded-xl border border-[#d6e4d6] bg-white/70 px-3 py-1.5 text-xs font-medium text-[#2d4934] shadow-2xs">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#176b3a] opacity-75"></span>
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-[#176b3a]"></span>
+                </span>
+                <span>Live All-India Trade Network • Verified Farm Matching</span>
               </div>
-              <span className="font-bold text-[#1d2c21]">Kisan Nexus</span>
             </div>
-            <p className="mt-2 text-xs text-[#7c897d]">
-              Smarter connections across the agricultural supply chain.
-            </p>
+
+            {/* Platform Column */}
+            <div>
+              <h4 className="text-xs font-bold uppercase tracking-wider text-[#176b3a]">
+                Platform
+              </h4>
+              <ul className="mt-4 space-y-2.5 text-sm font-medium text-[#556457]">
+                <li>
+                  <a href="#how-it-works" className="transition-colors hover:text-[#176b3a]">
+                    How it works
+                  </a>
+                </li>
+                <li>
+                  <a href="#technology" className="transition-colors hover:text-[#176b3a]">
+                    AI Matching & Tech
+                  </a>
+                </li>
+                <li>
+                  <a href="#impact" className="transition-colors hover:text-[#176b3a]">
+                    Impact Metrics
+                  </a>
+                </li>
+                <li>
+                  <a href="#roles" className="transition-colors hover:text-[#176b3a]">
+                    Ecosystem Roles
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Stakeholder Portals */}
+            <div>
+              <h4 className="text-xs font-bold uppercase tracking-wider text-[#176b3a]">
+                Stakeholder Hubs
+              </h4>
+              <ul className="mt-4 space-y-2.5 text-sm font-medium text-[#556457]">
+                <li>
+                  <Link href="/farmer/dashboard" className="flex items-center gap-1.5 transition-colors hover:text-[#176b3a]">
+                    <span>Farmers Portal</span>
+                    <ArrowUpRight className="h-3 w-3 opacity-60" />
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/fpo/dashboard" className="flex items-center gap-1.5 transition-colors hover:text-[#176b3a]">
+                    <span>FPO Aggregation Hub</span>
+                    <ArrowUpRight className="h-3 w-3 opacity-60" />
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/buyer/dashboard" className="flex items-center gap-1.5 transition-colors hover:text-[#176b3a]">
+                    <span>Bulk & Wholesale Buyers</span>
+                    <ArrowUpRight className="h-3 w-3 opacity-60" />
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/login" className="flex items-center gap-1.5 transition-colors hover:text-[#176b3a]">
+                    <span>Sign in to Portal</span>
+                    <ArrowUpRight className="h-3 w-3 opacity-60" />
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Trust & Security */}
+            <div>
+              <h4 className="text-xs font-bold uppercase tracking-wider text-[#176b3a]">
+                Trust & Security
+              </h4>
+              <ul className="mt-4 space-y-2.5 text-sm font-medium text-[#556457]">
+                <li className="flex items-center gap-1.5 text-[#3b5440]">
+                  <ShieldCheck className="h-4 w-4 text-[#176b3a]" />
+                  <span>100% Safe Payment Guarantee</span>
+                </li>
+                <li className="flex items-center gap-1.5 text-[#3b5440]">
+                  <CheckCircle2 className="h-4 w-4 text-[#176b3a]" />
+                  <span>Certified Grading</span>
+                </li>
+                <li className="flex items-center gap-1.5 text-[#3b5440]">
+                  <TrendingUp className="h-4 w-4 shrink-0 text-[#176b3a]" />
+                  <span>Fair Pricing Index</span>
+                </li>
+                <li className="flex items-center gap-1.5 text-[#3b5440]">
+                  <BadgeCheck className="h-4 w-4 shrink-0 text-[#176b3a]" />
+                  <span>Get Verified Partner</span>
+                </li>
+              </ul>
+            </div>
           </div>
 
-          <div className="flex flex-wrap gap-5 text-xs font-semibold text-[#647166]">
-            <a href="#how-it-works" className="hover:text-[#176b3a]">
-              How it works
-            </a>
-            <a href="#technology" className="hover:text-[#176b3a]">
-              Technology
-            </a>
-            <a href="#impact" className="hover:text-[#176b3a]">
-              Impact
-            </a>
-            <a href="/login" className="hover:text-[#176b3a]">
-              Login
-            </a>
+          {/* Sub-Footer / Copyright Bar */}
+          <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-[#dfe9df] pt-8 text-xs text-[#6e7d70] sm:flex-row">
+            <p>
+              © {new Date().getFullYear()} Kisan Nexus . All rights reserved.
+            </p>
+
+            <div className="flex items-center gap-5">
+              <a className="hover:text-[#176b3a]">Privacy Policy</a>
+              <span className="text-[#c5d3c5]">•</span>
+              <a className="hover:text-[#176b3a]">Terms of Service</a>
+            </div>
           </div>
         </div>
       </footer>
@@ -656,11 +713,10 @@ function SupplyCard({
 }) {
   return (
     <div
-      className={`flex items-center gap-3 rounded-2xl border p-4 ${
-        highlighted
+      className={`flex items-center gap-3 rounded-2xl border p-4 ${highlighted
           ? "border-[#b8d9bd] bg-[#f0f8f1]"
           : "border-[#e2eae1] bg-[#fafcf9]"
-      }`}
+        }`}
     >
       <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#e7f5e9] text-[#176b3a]">
         {icon}
@@ -751,37 +807,6 @@ function ImpactCard({ value, label }: { value: string; label: string }) {
   );
 }
 
-// Commented by agent, reason: Add href prop to RoleCard to support dynamic redirection
-// function RoleCard({
-//   icon,
-//   title,
-//   description,
-// }: {
-//   icon: React.ReactNode;
-//   title: string;
-//   description: string;
-// }) {
-//   return (
-//     <div className="rounded-2xl border border-[#dce7dc] bg-[#f9fbf8] p-7 transition duration-300 hover:-translate-y-1 hover:border-[#b9d4bc] hover:bg-white hover:shadow-xl hover:shadow-[#23442b]/5">
-//       <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#e7f5e9] text-[#176b3a]">
-//         {icon}
-//       </div>
-// 
-//       <h3 className="mt-6 text-xl font-bold text-[#1d2c21]">{title}</h3>
-// 
-//       <p className="mt-3 text-sm leading-6 text-[#718071]">{description}</p>
-// 
-//       <a
-//         href="/login"
-//         className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-[#176b3a]"
-//       >
-//         Get started
-//         <ArrowRight className="h-4 w-4" />
-//       </a>
-//     </div>
-//   );
-// }
-// End commented by agent
 function RoleCard({
   icon,
   title,

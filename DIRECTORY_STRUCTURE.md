@@ -132,6 +132,9 @@ kisan_nexus/
 │   ├── public
 │   │   ├── file.svg
 │   │   ├── globe.svg
+│   │   ├── kisan_nexus_logo_transparent.png
+│   │   ├── kisan_nexus_logo_white_bg.png
+│   │   ├── kisan_nexus_sidebar_image.png
 │   │   ├── kisan_nexus_web_logo.png
 │   │   ├── next.svg
 │   │   ├── vercel.svg
@@ -235,7 +238,6 @@ kisan_nexus/
 │   │   │   │   ├── Register.tsx
 │   │   │   │   └── page.tsx
 │   │   │   ├── Home.tsx
-│   │   │   ├── favicon.ico
 │   │   │   ├── globals.css
 │   │   │   ├── layout.tsx
 │   │   │   └── page.tsx

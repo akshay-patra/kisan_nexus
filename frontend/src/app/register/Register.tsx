@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Check, Leaf, LockKeyhole, Mail, MapPin, Phone, User } from "lucide-react";
 import { useState } from "react";
@@ -11,6 +12,21 @@ export default function Register() {
   const [otpSent, setOtpSent] = useState(false);
   const [otpVerified, setOtpVerified] = useState(false);
 
+  const [formData, setFormData] = useState({
+    fullName: "",
+    mobile: "",
+    otp: "",
+    email: "",
+    location: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [isReadOnly, setIsReadOnly] = useState(true);
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
+
   return (
     <main className="min-h-screen bg-[#F7FAF5] text-slate-900">
       <div className="grid min-h-screen lg:grid-cols-2">
@@ -21,10 +37,15 @@ export default function Register() {
 
           <div className="relative z-10 flex w-full flex-col justify-between p-12 xl:p-16">
 
-            <Link href="/" className="flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10">
-                <Leaf className="h-6 w-6 text-emerald-300" />
-              </div>
+            <Link href="/" className="group flex items-center gap-3 transition-opacity hover:opacity-95">
+              <Image
+                src="/kisan_nexus_logo_white_bg.png"
+                alt="Kisan Nexus Logo"
+                width={48}
+                height={48}
+                priority
+                className="h-12 w-12 rounded-xl object-contain shadow-xs transition-transform group-hover:scale-105"
+              />
 
               <div>
                 <div className="text-xl font-bold text-white">
@@ -32,7 +53,7 @@ export default function Register() {
                 </div>
 
                 <div className="text-xs text-emerald-200">
-                  Predict • Aggregate • Match • Optimize
+                  Demand-Driven Agri Commerce
                 </div>
               </div>
             </Link>
@@ -91,16 +112,19 @@ export default function Register() {
 
             {/* Mobile logo */}
             <div className="mb-8 lg:hidden">
-              <Link href="/" className="flex items-center gap-3">
+              <Link href="/" className="group flex items-center gap-3 transition-opacity hover:opacity-95">
+                <Image
+                  src="/kisan_nexus_web_logo.png"
+                  alt="Kisan Nexus Logo"
+                  width={40}
+                  height={40}
+                  priority
+                  className="h-10 w-10 rounded-xl object-contain shadow-xs"
+                />
 
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100">
-                  <Leaf className="h-5 w-5 text-emerald-700" />
-                </div>
-
-                <span className="text-xl font-bold">
-                  Kisan Nexus
+                <span className="text-xl font-bold text-slate-900">
+                  Kisan <span className="text-[#176b3a]">Nexus</span>
                 </span>
-
               </Link>
             </div>
 
@@ -179,7 +203,7 @@ export default function Register() {
             </div>
 
             {/* FORM */}
-            <form className="space-y-5">
+            <form className="space-y-5" autoComplete="on">
 
               {/* NAME */}
               <div>
@@ -191,7 +215,14 @@ export default function Register() {
                   <User className="absolute left-3 top-3.5 h-5 w-5 text-slate-400" />
 
                   <input
+                    id="register-fullname"
+                    name="name"
                     type="text"
+                    autoComplete="name"
+                    readOnly={isReadOnly}
+                    onFocus={() => setIsReadOnly(false)}
+                    value={formData.fullName}
+                    onChange={(e) => handleInputChange("fullName", e.target.value)}
                     placeholder="Enter your full name"
                     className="h-12 w-full rounded-xl border border-slate-200 bg-white pl-11 pr-4 text-sm outline-none transition focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10"
                   />
@@ -210,7 +241,14 @@ export default function Register() {
                     <Phone className="absolute left-3 top-3.5 h-5 w-5 text-slate-400" />
 
                     <input
+                      id="register-mobile"
+                      name="tel"
                       type="tel"
+                      autoComplete="tel"
+                      readOnly={isReadOnly}
+                      onFocus={() => setIsReadOnly(false)}
+                      value={formData.mobile}
+                      onChange={(e) => handleInputChange("mobile", e.target.value)}
                       placeholder="Enter mobile number"
                       className="h-12 w-full rounded-xl border border-slate-200 bg-white pl-11 pr-4 text-sm outline-none transition focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10"
                     />
@@ -255,8 +293,13 @@ export default function Register() {
                   <div className="flex gap-2">
 
                     <input
+                      id="register-otp"
+                      name="one-time-code"
                       type="text"
                       maxLength={6}
+                      autoComplete="one-time-code"
+                      value={formData.otp}
+                      onChange={(e) => handleInputChange("otp", e.target.value)}
                       placeholder="123456"
                       className="h-11 flex-1 rounded-lg border border-emerald-200 bg-white px-4 text-sm tracking-[0.3em] outline-none focus:border-emerald-500"
                     />
@@ -287,7 +330,14 @@ export default function Register() {
                   <Mail className="absolute left-3 top-3.5 h-5 w-5 text-slate-400" />
 
                   <input
+                    id="register-email"
+                    name="email"
                     type="email"
+                    autoComplete="email"
+                    readOnly={isReadOnly}
+                    onFocus={() => setIsReadOnly(false)}
+                    value={formData.email}
+                    onChange={(e) => handleInputChange("email", e.target.value)}
                     placeholder="you@example.com"
                     className="h-12 w-full rounded-xl border border-slate-200 bg-white pl-11 pr-4 text-sm outline-none transition focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10"
                   />
@@ -304,7 +354,14 @@ export default function Register() {
                   <MapPin className="absolute left-3 top-3.5 h-5 w-5 text-slate-400" />
 
                   <input
+                    id="register-location"
+                    name="address-level2"
                     type="text"
+                    autoComplete="address-level2"
+                    readOnly={isReadOnly}
+                    onFocus={() => setIsReadOnly(false)}
+                    value={formData.location}
+                    onChange={(e) => handleInputChange("location", e.target.value)}
                     placeholder="City / District / State"
                     className="h-12 w-full rounded-xl border border-slate-200 bg-white pl-11 pr-4 text-sm outline-none transition focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10"
                   />
@@ -321,7 +378,14 @@ export default function Register() {
                   <LockKeyhole className="absolute left-3 top-3.5 h-5 w-5 text-slate-400" />
 
                   <input
+                    id="register-password"
+                    name="new-password"
                     type="password"
+                    autoComplete="new-password"
+                    readOnly={isReadOnly}
+                    onFocus={() => setIsReadOnly(false)}
+                    value={formData.password}
+                    onChange={(e) => handleInputChange("password", e.target.value)}
                     placeholder="Minimum 8 characters"
                     className="h-12 w-full rounded-xl border border-slate-200 bg-white pl-11 pr-4 text-sm outline-none transition focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10"
                   />
@@ -338,7 +402,14 @@ export default function Register() {
                   <LockKeyhole className="absolute left-3 top-3.5 h-5 w-5 text-slate-400" />
 
                   <input
+                    id="register-confirm-password"
+                    name="confirm-password"
                     type="password"
+                    autoComplete="new-password"
+                    readOnly={isReadOnly}
+                    onFocus={() => setIsReadOnly(false)}
+                    value={formData.confirmPassword}
+                    onChange={(e) => handleInputChange("confirmPassword", e.target.value)}
                     placeholder="Re-enter your password"
                     className="h-12 w-full rounded-xl border border-slate-200 bg-white pl-11 pr-4 text-sm outline-none transition focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10"
                   />

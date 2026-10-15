@@ -1,5 +1,5 @@
-import FpoAggregation from './FpoAggregation';
+import FpoAggregation from "./FpoAggregation";
 
-export default function Page() {
+export default function FpoAggregationPage() {
   return <FpoAggregation />;
 }

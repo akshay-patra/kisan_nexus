@@ -1,11 +1,15 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Leaf, LockKeyhole, Phone } from "lucide-react";
 import { useState } from "react";
 
 export default function Login() {
   const [loginMethod, setLoginMethod] = useState<"mobile" | "email">("mobile");
+  const [identifier, setIdentifier] = useState("");
+  const [password, setPassword] = useState("");
+  const [isReadOnly, setIsReadOnly] = useState(true);
 
   return (
     <main className="min-h-screen bg-[#F7FAF5] text-slate-900">
@@ -17,17 +21,22 @@ export default function Login() {
 
           <div className="relative z-10 flex w-full flex-col justify-between p-12 xl:p-16">
 
-            <Link href="/" className="flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10">
-                <Leaf className="h-6 w-6 text-emerald-300" />
-              </div>
+            <Link href="/" className="group flex items-center gap-3 transition-opacity hover:opacity-95">
+              <Image
+                src="/kisan_nexus_logo_white_bg.png"
+                alt="Kisan Nexus Logo"
+                width={48}
+                height={48}
+                priority
+                className="h-12 w-12 rounded-xl object-contain shadow-xs transition-transform group-hover:scale-105"
+              />
 
               <div>
                 <div className="text-xl font-bold text-white">
                   Kisan Nexus
                 </div>
                 <div className="text-xs text-emerald-200">
-                  Predict • Aggregate • Match • Optimize
+                  Demand-Driven Agri Commerce
                 </div>
               </div>
             </Link>
@@ -60,13 +69,18 @@ export default function Login() {
           <div className="w-full max-w-md">
 
             <div className="mb-8 lg:hidden">
-              <Link href="/" className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100">
-                  <Leaf className="h-5 w-5 text-emerald-700" />
-                </div>
+              <Link href="/" className="group flex items-center gap-3 transition-opacity hover:opacity-95">
+                <Image
+                  src="/kisan_nexus_web_logo.png"
+                  alt="Kisan Nexus Logo"
+                  width={40}
+                  height={40}
+                  priority
+                  className="h-10 w-10 rounded-xl object-contain shadow-xs"
+                />
 
                 <span className="text-xl font-bold text-slate-900">
-                  Kisan Nexus
+                  Kisan <span className="text-[#176b3a]">Nexus</span>
                 </span>
               </Link>
             </div>
@@ -85,7 +99,10 @@ export default function Login() {
             <div className="mb-6 grid grid-cols-2 rounded-xl bg-slate-100 p-1">
               <button
                 type="button"
-                onClick={() => setLoginMethod("mobile")}
+                onClick={() => {
+                  setLoginMethod("mobile");
+                  setIdentifier("");
+                }}
                 className={`rounded-lg px-4 py-2.5 text-sm font-medium transition ${
                   loginMethod === "mobile"
                     ? "bg-white text-slate-900 shadow-sm"
@@ -97,7 +114,10 @@ export default function Login() {
 
               <button
                 type="button"
-                onClick={() => setLoginMethod("email")}
+                onClick={() => {
+                  setLoginMethod("email");
+                  setIdentifier("");
+                }}
                 className={`rounded-lg px-4 py-2.5 text-sm font-medium transition ${
                   loginMethod === "email"
                     ? "bg-white text-slate-900 shadow-sm"
@@ -108,7 +128,7 @@ export default function Login() {
               </button>
             </div>
 
-            <form className="space-y-5">
+            <form className="space-y-5" autoComplete="on">
 
               <div>
                 <label className="mb-2 block text-sm font-medium text-slate-700">
@@ -127,7 +147,14 @@ export default function Login() {
                   )}
 
                   <input
+                    id={loginMethod === "mobile" ? "login-mobile" : "login-email"}
+                    name={loginMethod === "mobile" ? "tel" : "email"}
                     type={loginMethod === "mobile" ? "tel" : "email"}
+                    autoComplete={loginMethod === "mobile" ? "tel" : "email"}
+                    readOnly={isReadOnly}
+                    onFocus={() => setIsReadOnly(false)}
+                    value={identifier}
+                    onChange={(e) => setIdentifier(e.target.value)}
                     placeholder={
                       loginMethod === "mobile"
                         ? "Enter mobile number"
@@ -156,7 +183,14 @@ export default function Login() {
                   <LockKeyhole className="absolute left-3 top-3.5 h-5 w-5 text-slate-400" />
 
                   <input
+                    id="login-password"
+                    name="password"
                     type="password"
+                    autoComplete="current-password"
+                    readOnly={isReadOnly}
+                    onFocus={() => setIsReadOnly(false)}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter your password"
                     className="h-12 w-full rounded-xl border border-slate-200 bg-white pl-11 pr-4 text-sm outline-none transition focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10"
                   />

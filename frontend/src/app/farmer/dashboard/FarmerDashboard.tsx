@@ -1,13 +1,3 @@
-// export default function FarmerDashboard() {
-//   return (
-//     <div className="p-8">
-//       <h1 className="text-2xl font-bold mb-4">Farmer Dashboard</h1>
-//       <p className="text-gray-600">Overview of your farming activities.</p>
-//     </div>
-//   );
-// }
-
-
 "use client";
 
 import Link from "next/link";
@@ -81,10 +71,6 @@ export default function FarmerDashboard() {
       <div className="mb-8 flex flex-col justify-between gap-5 md:flex-row md:items-center">
 
         <div>
-          <p className="text-sm font-medium text-emerald-700">
-            Wednesday, September 23
-          </p>
-
           <h1 className="mt-1 text-3xl font-bold tracking-tight text-slate-900">
             Good morning, Ramesh 👋
           </h1>

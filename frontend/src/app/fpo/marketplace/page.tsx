@@ -1,5 +1,5 @@
-import FpoMarketplace from './FpoMarketplace';
+import FpoMarketplace from "./FpoMarketplace";
 
-export default function Page() {
+export default function FpoMarketplacePage() {
   return <FpoMarketplace />;
 }
