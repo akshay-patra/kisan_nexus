@@ -1,5 +1,5 @@
-import FpoForecasting from './FpoForecasting';
+import FpoForecasting from "./FpoForecasting";
 
-export default function Page() {
+export default function FpoForecastingPage() {
   return <FpoForecasting />;
 }

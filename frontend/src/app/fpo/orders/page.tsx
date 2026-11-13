@@ -1,5 +1,5 @@
-import FpoOrders from './FpoOrders';
+import FpoOrders from "./FpoOrders";
 
-export default function Page() {
+export default function FpoOrdersPage() {
   return <FpoOrders />;
 }

@@ -1,5 +1,5 @@
-import BuyerDashboard from './BuyerDashboard';
+import BuyerDashboard from "./BuyerDashboard";
 
-export default function Page() {
+export default function BuyerDashboardPage() {
   return <BuyerDashboard />;
 }

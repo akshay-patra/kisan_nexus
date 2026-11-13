@@ -1,5 +1,5 @@
-import FpoFarmers from './FpoFarmers';
+import FpoFarmers from "./FpoFarmers";
 
-export default function Page() {
+export default function FpoFarmersPage() {
   return <FpoFarmers />;
 }

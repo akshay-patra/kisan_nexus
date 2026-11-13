@@ -40,3 +40,6 @@ ai_service/models/
 
 # OS
 Thumbs.db
+
+# Miscellaneous
+cookies.txt

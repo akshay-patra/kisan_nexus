@@ -1,5 +1,5 @@
-import BuyerRequirements from './BuyerRequirements';
+import BuyerRequirements from "./BuyerRequirements";
 
-export default function Page() {
+export default function BuyerRequirementsPage() {
   return <BuyerRequirements />;
 }

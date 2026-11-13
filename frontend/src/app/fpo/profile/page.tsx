@@ -1,5 +1,5 @@
-import FpoProfile from './FpoProfile';
+import FpoProfile from "./FpoProfile";
 
-export default function Page() {
+export default function FpoProfilePage() {
   return <FpoProfile />;
 }

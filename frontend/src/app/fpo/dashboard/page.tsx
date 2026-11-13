@@ -1,5 +1,5 @@
-import FpoDashboard from './FpoDashboard';
+import FpoDashboard from "./FpoDashboard";
 
-export default function Page() {
+export default function FpoDashboardPage() {
   return <FpoDashboard />;
 }
