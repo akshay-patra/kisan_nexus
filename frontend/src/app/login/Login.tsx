@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Leaf, LockKeyhole, Phone } from "lucide-react";
+import { ArrowRight, LockKeyhole, Phone } from "lucide-react";
 import { useState } from "react";
 
 export default function Login() {

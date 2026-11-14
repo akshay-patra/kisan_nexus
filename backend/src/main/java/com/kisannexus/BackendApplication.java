@@ -15,7 +15,7 @@ public class BackendApplication {
 		System.out.println("\n");
 		System.out.println("\t\u001B[1mBackend is running at:\u001B[0m\n");
 		System.out.println("\t\u001B[32m➜\u001B[0m  \u001B[1mLocal:\u001B[0m   \u001B[36mhttp://localhost:" + port + "\u001B[0m");
-		System.out.println("\t\u001B[32m➜\u001B[0m  \u001B[1mDeploy:\u001B[0m  \u001B[90m<Not Deployed Yet>\u001B[0m");
+		System.out.println("\t\u001B[32m➜\u001B[0m  \u001B[1mDeployed Backend (Render):\u001B[0m  \u001B[36mhttps://kisan-nexus.onrender.com/\u001B[0m");
 		System.out.println("\n");
 	}
 

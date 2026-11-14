@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Check, Leaf, LockKeyhole, Mail, MapPin, Phone, User } from "lucide-react";
+import { ArrowRight, Check, LockKeyhole, Mail, MapPin, Phone, User } from "lucide-react";
 import { useState } from "react";
 
 type Role = "FARMER" | "FPO" | "BUYER";
