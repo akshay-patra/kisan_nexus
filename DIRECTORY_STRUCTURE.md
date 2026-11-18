@@ -266,7 +266,8 @@ kisan_nexus/
 │   │   │   ├── auth
 │   │   │   ├── constants
 │   │   │   └── utils
-│   │   └── types
+│   │   ├── types
+│   │   └── instrumentation.ts
 │   ├── .env.example
 │   ├── .gitignore
 │   ├── AGENTS.md
